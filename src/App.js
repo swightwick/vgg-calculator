@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css';
 import logo from './images/logo.png';
+import { useEffect } from 'react';
 
 function App() {
   const [seller, setSeller] = useState('0');
@@ -9,11 +10,16 @@ function App() {
   const [payout, setPayout] = useState('0');
   const [ogPayout, setOgPayout] = useState('0');
   const [page, setPage] = useState('0');
+  const [profitPerTicket, setProfitPerTicket] = useState('0');
+  const [profitTotal, setProfitTotal] = useState('0');
 
   const handleTicketPrice = (event) => {
     const value = event.target.value;
     setTicketPrice(value);
   };
+
+  let fullPay
+  let fullTotal
 
   const handleSeller = (event) => {
     const value = event.target.value;
@@ -22,7 +28,7 @@ function App() {
     let pageVat = (value / 100) * 2;
     let payout = value - pageFee - pageVat
     let vggFee = Number(value) / 100 * 18
-    setOgPayout(payout);
+    setOgPayout(payout.toFixed(2));
     let fullPayout = payout * ticketAmount
     setPayout(fullPayout.toFixed(2));
     let fullVggFee = vggFee + Number(value)
@@ -33,9 +39,20 @@ function App() {
     const value = event.target.value;
     setTicketAmount(Number(value));
     let updatedPayout = Number(value) * ogPayout
-    setPayout(updatedPayout);
+    setPayout(updatedPayout.toFixed(2));
   };
 
+
+  useEffect(() => {
+    fullPay = ogPayout - ticketPrice
+    setProfitPerTicket(fullPay.toFixed(2));
+    
+    fullTotal = payout - (ticketPrice * ticketAmount)
+    setProfitTotal(fullTotal.toFixed(2));
+
+  }, [ogPayout,ticketPrice, ticketAmount, payout])
+
+  // payout - (ticketPrice * ticketAmount)
 
   return (
     <div className="App min-h-screen flex flex-col items-center justify-center text-white">
@@ -63,10 +80,10 @@ function App() {
             <span className='mb-0 text-xl mx-auto'>VGG Price listing: <b>£{page} per ticket</b></span>
           </div>
           <div className="flex flex-row items-center border w-full p-3 rounded-xl border-[#444]">
-            <p className='mb-0 text-xl mx-auto'>Payout per ticket: <span className='font-bold text-[#8cc63f]'>£{ogPayout}</span> / Profit per ticket: <span className='font-bold text-[#8cc63f]'>£{ogPayout - ticketPrice}</span></p>
+            <p className='mb-0 text-xl mx-auto'>Payout per ticket: <span className='font-bold text-[#8cc63f]'>£{ogPayout}</span> / Profit per ticket: <span className='font-bold text-[#8cc63f]'>£{profitPerTicket}</span></p>
           </div>
           <div className="flex flex-row items-center border w-full p-3 rounded-xl border-[#444]">
-            <p className='mb-0 text-xl mx-auto'>Total payout: <span className='font-bold text-[#8cc63f]'>£{payout}</span> / Total profit: <span className='font-bold text-[#8cc63f]'>£{payout - (ticketPrice * ticketAmount)}</span></p>
+            <p className='mb-0 text-xl mx-auto'>Total payout: <span className='font-bold text-[#8cc63f]'>£{payout}</span> / Total profit: <span className='font-bold text-[#8cc63f]'>£{profitTotal}</span></p>
           </div>
         </div>
         <div className='pt-6 pb-3 flex flex-col items-center'>
