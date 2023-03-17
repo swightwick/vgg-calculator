@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/vgg-calculator/static/css/main.b297b372.css",
-    "main.js": "/vgg-calculator/static/js/main.01b752a5.js",
+    "main.css": "/vgg-calculator/static/css/main.23273a06.css",
+    "main.js": "/vgg-calculator/static/js/main.0fd96712.js",
     "static/js/787.ff2277a5.chunk.js": "/vgg-calculator/static/js/787.ff2277a5.chunk.js",
     "static/media/logo.png": "/vgg-calculator/static/media/logo.96100405e78bfd0ebb6f.png",
     "index.html": "/vgg-calculator/index.html",
-    "main.b297b372.css.map": "/vgg-calculator/static/css/main.b297b372.css.map",
-    "main.01b752a5.js.map": "/vgg-calculator/static/js/main.01b752a5.js.map",
+    "main.23273a06.css.map": "/vgg-calculator/static/css/main.23273a06.css.map",
+    "main.0fd96712.js.map": "/vgg-calculator/static/js/main.0fd96712.js.map",
     "787.ff2277a5.chunk.js.map": "/vgg-calculator/static/js/787.ff2277a5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b297b372.css",
-    "static/js/main.01b752a5.js"
+    "static/css/main.23273a06.css",
+    "static/js/main.0fd96712.js"
   ]
 }
