@@ -65,7 +65,7 @@ function App() {
           </div>
           <div className="flex flex-col rounded-xl p-5 bg-black border-darkGrey border">
             <span className='mb-2 text-md md:text-xl'>Amount of tickets</span>
-            <input type="number" inputMode="numeric" onChange={handleTicketAmount} value={ticketAmount} className="flex relative text-4xl md:text-5xl md:leading-[3.5rem] text-center bg-transparent outline-none w-auto font-bold"/> 
+            <input type="number" inputMode="numeric" onChange={handleTicketAmount} value={ticketAmount}  min="1" className="flex relative text-4xl md:text-5xl md:leading-[3.5rem] text-center bg-transparent outline-none w-auto font-bold"/> 
           </div>
         </div>
         <div className="flex flex-col gap-y-5 justify-center mt-5">
